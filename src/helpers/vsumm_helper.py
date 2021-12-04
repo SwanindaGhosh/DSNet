@@ -60,7 +60,7 @@ def get_keyshot_summ(pred: np.ndarray,
                      n_frames: int,
                      nfps: np.ndarray,
                      picks: np.ndarray,
-                     proportion: float = 0.15
+                     proportion: float = 0.50
                      ) -> np.ndarray:
     """Generate keyshot-based video summary i.e. a binary vector.
 
@@ -80,7 +80,7 @@ def get_keyshot_summ(pred: np.ndarray,
     for i in range(len(picks)):
         pos_lo = picks[i]
         pos_hi = picks[i + 1] if i + 1 < len(picks) else n_frames
-        frame_scores[pos_lo:pos_hi] = pred[i]
+        frame_scores[pos_lo:pos_hi] = 1-pred[i]
 
     # Assign scores to video shots as the average of the frames.
     seg_scores = np.zeros(len(cps), dtype=np.int32)
