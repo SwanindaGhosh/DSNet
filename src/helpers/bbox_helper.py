@@ -108,7 +108,7 @@ def nms(scores: np.ndarray,
 
         iou = iou_lr(bboxes_remain, np.expand_dims(bbox, axis=0))
 
-        keep_indices = (iou < thresh)
+        keep_indices = (iou < 0.35)
         bboxes_remain = bboxes_remain[keep_indices]
         scores_remain = scores_remain[keep_indices]
 
