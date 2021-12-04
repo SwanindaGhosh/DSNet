@@ -30,7 +30,7 @@ def train(args, split, save_path):
     val_set = data_helper.VideoDataset(split['test_keys'])
     val_loader = data_helper.DataLoader(val_set, shuffle=False)
 
-    for epoch in range(args.max_epoch):
+    for epoch in range(10):
         model.train()
         stats = data_helper.AverageMeter('loss', 'cls_loss', 'loc_loss',
                                          'ctr_loss')
